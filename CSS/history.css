@@ -1,0 +1,370 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  margin-top: 0;
+  background-color: rgba(255, 255, 255, 0.743); 
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+}
+.nav,.r-nav{
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav a,.r-nav a{
+  color: #8B4513;
+  text-decoration: none;
+  margin-right: 20px;
+}
+.nav a:hover,.r-nav a:hover,.toppart a:hover,.leftpart a:hover,.rightpart a:hover{
+  color: rgb(126, 45, 5);
+  transform: scale(1.1);
+  font-weight: bolder;
+}
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  color: #5d4037;
+  background: url('../IMG/背景图3.jpg') no-repeat center center fixed;
+  background-size: cover;
+  line-height: 1.6;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #8B4513;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-family: "STKaiti";
+  font-size: 1.3em;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin-left: 30px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #8B4513;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 0.5em 0;
+  transition: all 0.3s ease;
+}
+
+.navbar a.active {
+  border-bottom: 2px solid #a01e1e;
+  color: #a01e1e;
+}
+
+.navbar a:hover {
+  color: #a01e1e;
+  transform: translateY(-2px);
+}
+.btn-3 img{
+  width: 24px;
+  height: 24px;
+  vertical-align: middle; 
+}
+.btn-3 {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-3:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1); 
+}
+  
+  .container {
+    max-width: 900px;
+    margin: 130px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    height: auto;
+  }
+ 
+  .page-header h1 {
+    font-family: 'HanWangJinLian', 'SimHei', sans-serif;
+    font-size: 2.5em;
+    color: #5d462e;
+    text-align: center;
+    margin-bottom: 1.5em;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+
+  .intro {
+    margin: 0 0 40px;
+    font-size: 1.1em;
+    text-align: justify;
+    color: #444;
+    padding: 0 10px;
+    line-height: 1.8;
+  }
+  
+  
+  .timeline {
+    margin: 40px auto;
+    position: relative;
+    max-width: 800px;
+  }
+  
+  
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+ 
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 15px;
+    background:  url('../IMG/时间轴.jpg') repeat-y center;
+    transform: translateX(-50%);
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .timeline-item {
+    position: relative;
+    min-height: 250px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 20px 0; 
+  }
+  
+  .year {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    font-weight: bold;
+    color: #8b5a2b;
+    font-size: 1.2em;
+    padding: 0 10px;
+    z-index: 2;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .year:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+  .timeline-item:hover .year {
+    color: #a67c52;
+    transform: scale(1.05);
+    font-weight: bold;
+  }
+  
+  .timeline-item:nth-child(odd) .year {
+    right: calc(50% + 15px); 
+    text-align: right;
+  }
+  
+  .timeline-item:nth-child(even) .year {
+    left: calc(50% + 15px);
+    text-align: left;
+  }
+  
+  .event-image-container {
+    margin-top: 12px;
+    width: 100%;           
+        
+    border-radius: 8px;
+  }
+  
+  .event-image-container img {
+    width: 100%;          
+    height: auto;            
+    display: block;          
+    max-width: 100%;
+  }
+    
+  .event {
+    position: absolute;
+    width: 300px;
+    background:  #f8f3e9;
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 3px solid #c9a88c;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+    overflow: hidden;   
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+    visibility: hidden;
+  }
+ 
+  .event.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    text-align: left;
+  }
+  
+  .timeline-item:nth-child(odd) .event {
+    right: calc(50% + 40px);
+    top: 30px;
+  }
+  
+  .timeline-item:nth-child(even) .event {
+    left: calc(50% + 40px);
+    top: 30px;
+  }
+  
+  .event.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+ 
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .timeline::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin: 10px;
+      padding: 20px;
+    }
+  
+    .timeline-item {
+      width: 100% !important;
+      float: none !important;
+      padding: 0 !important;
+      text-align: center !important;
+      margin: 30px 0;
+    }
+  
+    .timeline::before {
+      left: 50%;
+    }
+  
+    .page-header h1 {
+      font-size: 1.8em;
+    }
+  
+    .event {
+      text-align: center;
+    }
+  }
+  @keyframes unroll {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+  }
+  
+  .timeline {
+    animation: unroll 1.5s ease-out forwards;
+  }
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-size: 0.9em;
+  }
+   
+ .dufu-float-ball img {
+  border-radius: 50%; 
+  width: 80px;
+  height: 80px;
+  object-fit: cover; 
+  display: block;
+}
+
+.dufu-float-ball {
+  /* 保持你原来的宽高 */
+  width: 70px;
+  height: 80px;
+  border-radius: 50%; /* 变圆 */
+  overflow: hidden; /* 关键：超出圆形的部分会被切掉 */
+  position: relative;
+  cursor: pointer;
+  /* 其他样式... */
+}
+
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  /* 确保 canvas 填满容器 */
+}
+
+#canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}

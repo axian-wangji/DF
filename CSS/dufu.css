@@ -1,0 +1,382 @@
+#dufu-assistant {
+  --dufu-primary: #7a4d2a;
+  --dufu-primary-dark: #5d3920;
+  --dufu-accent: #d9b98f;
+  --dufu-bg: #fffaf3;
+  --dufu-panel-bg: rgba(255, 250, 243, 0.98);
+  --dufu-border: #ead9c3;
+  --dufu-text: #3b2a1e;
+  --dufu-subtext: #7d6654;
+  --dufu-shadow: 0 12px 30px rgba(77, 51, 31, 0.18);
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+.dufu-float-wrap {
+  position: fixed;
+  right: 28px;
+  bottom: 32px;
+  z-index: 9999;
+}
+.dufu-float-ball {
+  width: 220px;  /* 悬浮球直径 */
+  height: 150px; /* 悬浮球直径 */
+  border-radius: 50%; /* 必须是圆形 */
+  overflow: hidden; /* 关键：超出圆形的部分会被切掉 */
+  position: fixed; /* 悬浮定位 */
+  position: relative;
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+/* 确保 model-viewer 填满父容器 */
+model-viewer {
+  width: 100%;
+  height:100%;
+  --progress-bar-color: #FF0000; 
+        width: 100%; 
+        height: 100%; 
+        display: block;
+        background-color:"transparent"/* 加载条颜色 */
+}
+
+.dufu-float-ball:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.dufu-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.dufu-label {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.dufu-hover-menu {
+  position: absolute;
+  right: 0;
+  bottom: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.dufu-float-wrap:hover .dufu-hover-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dufu-menu-item {
+  border: none;
+  background: var(--dufu-panel-bg);
+  color: var(--dufu-text);
+  border: 1px solid var(--dufu-border);
+  border-radius: 999px;
+  padding: 10px 16px;
+  box-shadow: var(--dufu-shadow);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.dufu-menu-item:hover {
+  background: #fff;
+  color: var(--dufu-primary);
+  transform: translateX(-4px);
+}
+
+.dufu-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 120px;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  height: 620px;
+  max-height: calc(100vh - 140px);
+  background: var(--dufu-panel-bg);
+  border: 1px solid var(--dufu-border);
+  border-radius: 18px;
+  box-shadow: var(--dufu-shadow);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+}
+
+.dufu-panel.show {
+  display: flex;
+}
+
+.dufu-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, #8b5a35, #b9804b);
+  color: #fff;
+}
+
+.dufu-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dufu-panel-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.title-main {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.title-sub {
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.dufu-panel-actions button {
+  border: none;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.dufu-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--dufu-border);
+  background: #fff7ee;
+  overflow-x: auto;
+}
+
+.dufu-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 8px;
+  cursor: pointer;
+  color: var(--dufu-subtext);
+  min-width: 72px;
+}
+
+.dufu-tab.active {
+  color: var(--dufu-primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--dufu-primary);
+}
+
+.dufu-panel-body {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.dufu-tab-content {
+  display: none;
+  height: 100%;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.dufu-tab-content.active {
+  display: block;
+}
+
+.dufu-messages {
+  height: calc(100% - 90px);
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 12px；
+}
+
+.dufu-msg {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.dufu-msg.user {
+  justify-content: flex-end;
+}
+
+.msg-bubble {
+  max-width: 85%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  line-height: 1.6;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.dufu-msg.assistant .msg-bubble {
+  background: #f3e8d8;
+  color: var(--dufu-text);
+  border-top-left-radius: 4px;
+}
+
+.dufu-msg.user .msg-bubble {
+  background: linear-gradient(135deg, #8b5a35, #b9804b);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+.dufu-input-area {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.dufu-input-area textarea,
+.dufu-form input,
+.dufu-form select,
+.dufu-form textarea {
+  width: 100%;
+  border: 1px solid var(--dufu-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 14px;
+  color: var(--dufu-text);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.dufu-input-area textarea {
+  height: 72px;
+  resize: none;
+}
+
+.dufu-input-area button,
+.dufu-form button {
+  border: none;
+  background: linear-gradient(135deg, #8b5a35, #b9804b);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dufu-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.dufu-form.vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.dufu-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.dufu-inline-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.dufu-result {
+  background: #fff;
+  border: 1px solid var(--dufu-border);
+  border-radius: 14px;
+  padding: 14px;
+  min-height: 120px;
+  color: var(--dufu-text);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .dufu-panel {
+    right: 12px;
+    left: 12px;
+    bottom: 100px;
+    width: auto;
+    height: 70vh;
+  }
+
+  .dufu-float-wrap {
+    right: 16px;
+    bottom: 20px;
+  }
+}
+ 
+ .dufu-float-ball img {
+  border-radius: 50%; 
+  width: 80px;
+  height: 80px;
+  object-fit: cover; 
+  display: block;
+}
+/* 小喇叭图标样式 */
+.dufu-audio-btn {
+  display: inline-block;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 1.2em; /* 图标大小 */
+  vertical-align: middle;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.dufu-audio-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.dufu-float-ball {
+  /* 保持你原来的宽高 */
+  width: 85px;
+  height: 85px;
+  border-radius: 50%; /* 变圆 */
+  overflow: hidden; /* 关键：超出圆形的部分会被切掉 */
+  position: relative;
+  cursor: pointer;
+  /* 其他样式... */
+}
+
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  /* 确保 canvas 填满容器 */
+}
+
+#canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
